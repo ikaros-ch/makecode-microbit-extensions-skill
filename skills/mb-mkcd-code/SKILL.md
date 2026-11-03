@@ -15,6 +15,7 @@ Reference files live in the main skill folder, `../makecode-microbit-extensions/
 | Bluetooth | `ble.md` |
 | a named board, chip or sensor | grep `extensions.md` first: use the approved extension instead of re-writing a driver |
 | block-based output | `blocks.md` |
+| no approved extension, or tools/testing (radio multi-editor, BLE test apps) | `resources.md` |
 
 ## Steps
 

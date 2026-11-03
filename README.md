@@ -36,6 +36,7 @@ done
 - [radio.md](radio.md): radio packet layout, payload limits, broadcast messages, radio vs Bluetooth
 - [ble.md](ble.md): Bluetooth services, UART, yotta config, C++ extension example (blehid)
 - [extensions.md](extensions.md): index of every Micro:bit Foundation-approved extension, grep by chip or board
+- [resources.md](resources.md): tools, unlisted drivers, reference drivers, schematics (curated from awesome-microbit)
 
 ## License
 

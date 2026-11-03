@@ -10,6 +10,7 @@ Reference files live in the main skill folder, `../makecode-microbit-extensions/
 ## 1. Research first
 
 - **Already exists?** Grep `extensions.md` for the chip, board and vendor. If an approved extension covers it, tell the user and stop unless they still want their own (e.g. missing features: then consider a PR to that repo).
+- **More MakeCode drivers and micro:bit MicroPython ports**: grep `resources.md`.
 - **Prior art in MakeCode**: `gh search repos "<chip> makecode" --limit 20` and `gh search code "<chip>" --filename pxt.json`. Read the closest ones: copy good patterns, note their bugs.
 - **Datasheet**: web search for the official datasheet. Take the I2C address(es), register map, init sequence, timing (boot delay, conversion time), byte order and signedness from it. Cite the URL in a code comment.
 - **Reference drivers**: the vendor's Arduino / MicroPython / CircuitPython library shows a working init sequence and calibration math. Credit it in the README and keep its license compatible with MIT.

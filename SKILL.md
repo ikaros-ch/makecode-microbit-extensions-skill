@@ -73,7 +73,8 @@ Minimal `pxt.json`:
 | More I2C (command-packet boards, timing, errors, endianness) | [i2c.md](i2c.md) |
 | Radio (packet layout, limits, broadcast, custom protocols) | [radio.md](radio.md) |
 | Bluetooth (UART, yotta config, C++ shims, blehid) | [ble.md](ble.md) |
-| Find an existing extension for a chip or board | grep [extensions.md](extensions.md) |
+| Find an existing extension for a chip or board | grep [extensions.md](extensions.md), then [resources.md](resources.md) (more drivers) |
+| Tools, radio multi-editor, reference drivers, schematics | [resources.md](resources.md) |
 
 ## Common mistakes
 
