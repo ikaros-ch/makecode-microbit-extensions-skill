@@ -69,6 +69,11 @@ Minimal `pxt.json`:
 | Background loop | `control.inBackground(() => { while (on) { ...; basic.pause(20) } })` |
 | I2C write | `pins.i2cWriteBuffer(addr, pins.createBufferFromArray([reg, val]))` |
 | I2C read | `pins.i2cWriteNumber(addr, reg, NumberFormat.UInt8BE, true); pins.i2cReadNumber(addr, NumberFormat.UInt8BE)` |
+| Pins, V1 vs V2, fibers, simulator limits | [hardware.md](hardware.md) |
+| More I2C (command-packet boards, timing, errors, endianness) | [i2c.md](i2c.md) |
+| Radio (packet layout, limits, broadcast, custom protocols) | [radio.md](radio.md) |
+| Bluetooth (UART, yotta config, C++ shims, blehid) | [ble.md](ble.md) |
+| Find an existing extension for a chip or board | grep [extensions.md](extensions.md) |
 
 ## Common mistakes
 
