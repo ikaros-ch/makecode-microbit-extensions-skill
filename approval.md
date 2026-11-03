@@ -20,7 +20,7 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
 - [ ] **Blocks are lowercase** unless they refer to acronyms.
 - [ ] **Blocks have tooltips** (JSDoc) **and help links** (`//% help=github:...` → `docs/*.md`).
 - [ ] **`test.ts` is comprehensive**: covers all functionality, documents how to test, what to expect, and what counts as pass/fail (e.g. `// EXPECT:` comments). Must not throw in the simulator if it uses non-simulated hardware.
-- [ ] Submitter is on the **micro:bit developer Slack** and joined `#makecode`, `#makecode-extensions`, `#makecode-tutorials` (join via https://tech.microbit.org/community).
+- [ ] Submitter is on the **micro:bit developer Slack** and joined `#makecode` and `#makecode-pkg-owners` (support article wording, Nov 2026). There's no public sign-up: tech.microbit.org/community no longer mentions Slack. Ask for an invite via https://support.microbit.org/ (submit a ticket, say it's for extension approval) or on https://forum.makecode.com/c/microbit/11. If the user can't get in, say so on the form; the Foundation can make exceptions.
 - [ ] TypeScript naming: camelCase functions, namespaces, members; capitalized class names, enums and enum members (see blocks.md).
 - [ ] **Finished**. Anything in development says "beta" in the repo description.
 
