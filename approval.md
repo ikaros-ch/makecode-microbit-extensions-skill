@@ -18,10 +18,16 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
 - [ ] **README has well-commented examples** as TypeScript / `blocks` fences, not screenshots. A teacher should understand its purpose and use.
 - [ ] **README links to further educational materials and tutorials.**
 - [ ] **Blocks are lowercase** unless they refer to acronyms.
-- [ ] **Blocks have tooltips** (JSDoc) **and help links** (`//% help=github:...` → `docs/*.md`).
+- [ ] **Blocks have tooltips** (JSDoc) **and help links** (`//% help=github:...` → `docs/*.md`). Every **namespace and enum** also gets its own `/** */` tooltip. A `/** */` comment at the top of the file becomes the tooltip of whatever follows it (usually the first enum), so make file headers `//` comments. Check tooltips in JavaScript mode.
 - [ ] **`test.ts` is comprehensive**: covers all functionality, documents how to test, what to expect, and what counts as pass/fail (e.g. `// EXPECT:` comments). Must not throw in the simulator if it uses non-simulated hardware.
-- [ ] Submitter is on the **micro:bit developer Slack** and joined `#makecode` and `#makecode-pkg-owners` (support article wording, Nov 2026). Workspace: https://microbit-community.slack.com/ (sign in there if already invited). There's no public sign-up: tech.microbit.org/community no longer mentions Slack. Ask for an invite via https://support.microbit.org/ (submit a ticket, say it's for extension approval) or on https://forum.makecode.com/c/microbit/11. If the user can't get in, say so on the form; the Foundation can make exceptions.
-- [ ] TypeScript naming: camelCase functions, namespaces, members; capitalized class names, enums and enum members (see blocks.md).
+- [ ] TypeScript naming: camelCase functions, namespaces, members; capitalized class names, enums and enum members (see blocks.md). The reviewer also checks:
+  - **Enums inside the namespace** (`thing.CustomSlot.Slot1`), not global. A global enum needs a prefix nobody else would use; generic ones like `Lcd` are rejected because they block every other `Lcd...` name.
+  - **Self-documenting names**: spell out words, no acronyms *or abbreviations* (`CustomCharacter`, not `Char`), except very common ones (LCD, RGB, I2C).
+  - **A namespace unlikely to clash** with the vendor's or another author's (`groveLcd` could be taken by Seeed). Clashes break user projects in ways users can't diagnose. To only need one unique name, nest: `namespace myVendor.thing { }` (as in [Seeed pxt-grove AHT20.ts](https://github.com/Seeed-Studio/pxt-grove/blob/master/sensors/AHT20.ts)). Not a blocker if a search finds no clash.
+
+**Slack is no longer required** (Martin Williams, Micro:bit Educational Foundation, ticket #103878, Nov 2026). The support article and form may still mention it until they're updated; don't ask the user to join.
+
+**Pre-review:** the Foundation welcomes an email to help@microbit.org (or a ticket at https://support.microbit.org/) with the repo link before submitting; the person who processes approvals gives informal feedback.
 - [ ] **Finished**. Anything in development says "beta" in the repo description.
 
 Also required by the MakeCode docs, not on the form:
@@ -44,7 +50,7 @@ mkc build
 
 ## Submit
 
-1. Fill the extension review form: https://form.jotformeu.com/90075019358357 (repo URL, product, contact details, the checklist above). The form needs the submitter's own details and Slack membership; ask the user for them, don't make them up.
+1. Fill the extension review form: https://form.jotformeu.com/90075019358357 (repo URL, product, contact details, the checklist above). The form needs the submitter's own details; ask the user for them, don't make them up.
 2. Foundation reviews. Once accepted, the MakeCode team opens a PR on `microsoft/pxt-microbit` adding the repo to the approved list (`targetconfig.json`); a team member comments asking for approval, then it merges.
 3. Approval goes live with the next editor release. Then search for the extension name in Extensions to confirm.
 

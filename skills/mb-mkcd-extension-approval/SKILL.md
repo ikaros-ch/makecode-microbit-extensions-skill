@@ -20,6 +20,7 @@ Grep `extensions.md`, then confirm against the live list: `gh api repos/microsof
 Go through every item in `approval.md` and check it from the files, not by asking: run the verification commands there (tag vs `pxt.json` version, release, icon size and bytes, license, repo description, `mkc build`). Also check:
 - `pxt.json` `files` equals the source files in the repo, no more, no less.
 - Every exported block has lowercase text, a JSDoc tooltip and a `help=` link whose `docs/*.md` exists.
+- The namespace and every enum have their own JSDoc tooltip; no `/** */` file header. Enums sit inside the namespace with spelled-out names; the namespace is unlikely to clash (search approved extensions and GitHub).
 - `test.ts` calls every block and has `// EXPECT:` notes.
 - README: product link, commented `blocks` examples (no screenshots), tutorial links, `for PXT/microbit` line.
 - C++ (if any) targets CODAL, not mbed.
@@ -28,7 +29,7 @@ Report a table: item, pass/fail, evidence, fix.
 
 ## 4. Fix
 
-Fix what can be fixed in the repo. Ask the user before committing, tagging or pushing. Things only the user can supply: product page, product photo for the icon, accessories-list submission, Slack membership, contact details. Ask; never invent them.
+Fix what can be fixed in the repo. Ask the user before committing, tagging or pushing. Things only the user can supply: product page, product photo for the icon, accessories-list submission, contact details. Ask; never invent them.
 
 ## 5. Submit
 

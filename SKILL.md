@@ -44,7 +44,7 @@ Minimal `pxt.json`:
 
 ## Workflow
 
-1. **Write** `main.ts` in one `namespace`. Block annotations: see [blocks.md](blocks.md).
+1. **Write** `main.ts` in one `namespace`, enums included. Block annotations and naming: see [blocks.md](blocks.md).
 2. **Compile locally** before every push:
    ```bash
    npm i -g makecode      # once; provides `mkc`

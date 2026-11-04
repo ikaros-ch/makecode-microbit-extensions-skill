@@ -21,8 +21,8 @@ Write down the findings in a short list before coding and show it to the user.
 ## 2. Build
 
 Follow the layout and workflow in `SKILL.md`:
-- `pxt.json` listing every file, `main.ts` in one namespace, lazy init on first block call.
-- Blocks per `blocks.md`: lowercase text, JSDoc tooltips, `help=` links, groups, sensible `min/max/defl`.
+- `pxt.json` listing every file, `main.ts` in one namespace that won't clash with the vendor's or other authors' (search first), enums inside it, lazy init on first block call.
+- Blocks per `blocks.md`: lowercase text, JSDoc tooltips (also on the namespace and each enum; no `/** */` file header), spelled-out names, `help=` links, groups, sensible `min/max/defl`.
 - `test.ts` calling every block with `// EXPECT:` notes.
 - `README.md` with product link, commented `blocks` examples, links to tutorials, the `for PXT/microbit` line.
 - MIT `LICENSE.txt`, `icon.png` 300x200 under 100 KB (ask the user for a product photo; don't invent one).

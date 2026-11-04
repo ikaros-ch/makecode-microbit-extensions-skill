@@ -3,16 +3,24 @@
 Annotations are `//%` comments directly above an `export function` (or on the `namespace`). JSDoc above them becomes the tooltip and parameter help.
 
 ```typescript
-const enum ThingMode {
-    //% block="fast"
-    Fast = 0,
-    //% block="slow"
-    Slow = 1
-}
+// File header: use // comments. A /** */ here would become the tooltip of the next declaration.
 
+/**
+ * Blocks for the Thing sensor
+ */
 //% color="#2a9d8f" weight=90 icon="" block="Thing"
 //% groups='["Text", "Color"]'
 namespace thing {
+    /**
+     * How fast the thing runs
+     */
+    export enum Mode {
+        //% block="fast"
+        Fast = 0,
+        //% block="slow"
+        Slow = 1
+    }
+
     /**
      * Show text at a position.
      * @param text what to show
@@ -26,7 +34,7 @@ namespace thing {
     export function showText(text: string, col: number): void { }
 
     //% block="thing mode $mode"
-    export function setMode(mode: ThingMode): void { }
+    export function setMode(mode: Mode): void { }
 
     //% block="thing color $color"
     //% color.shadow="colorNumberPicker"
@@ -52,16 +60,18 @@ namespace thing {
 | `expandableArgumentMode="toggle"` | Optional trailing params behind a +/- button. |
 | `blockHidden=true` | Hidden helper block (shadow blocks, image literals). |
 | `deprecated=true` | Hides the block but keeps old projects loading. |
-| `help=github:repo/docs/page` | Help link to `docs/page.md` in the repo. |
+| `help=github:name/docs/page` | Help link to `docs/page.md`. `name` is the pxt.json `name` (not the repo name), and the page must be listed in pxt.json `files`. |
 | `color` `icon` on namespace | Category color (hex) and Font Awesome 4 glyph as a `\uf...` escape. |
 
 ## Naming conventions (approval checks these)
 
 - English names. camelCase for namespaces, functions, params, fields; PascalCase for enums and classes.
 - No `get` prefix on accessors (`temperature`, not `getTemperature`).
-- Spell out words; avoid acronyms except well-known ones (LCD, RGB, I2C).
+- Spell out words; avoid acronyms and abbreviations except well-known ones (LCD, RGB, I2C). `CustomCharacter`, not `Char`.
 - Block text lowercase except acronyms.
-- Keep everything inside a namespace. A global enum needs a unique prefix (`ThingMode`, not `Mode`).
+- Keep everything inside the namespace, enums too (`thing.Mode`). A global enum needs a prefix no other author would use; generic prefixes like `Lcd` get rejected.
+- JSDoc tooltip on the namespace and every enum, not just blocks. Check them in JavaScript mode.
+- Pick a namespace nobody else is likely to use (the vendor may already own `groveLcd`). Nest under one unique name if needed: `namespace myVendor.thing { }`. Search approved extensions and GitHub first.
 
 ## Help pages (`docs/*.md`)
 
