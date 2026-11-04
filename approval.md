@@ -25,8 +25,6 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
   - **Self-documenting names**: spell out words, no acronyms *or abbreviations* (`CustomCharacter`, not `Char`), except very common ones (LCD, RGB, I2C).
   - **A namespace unlikely to clash** with the vendor's or another author's (`groveLcd` could be taken by Seeed). Clashes break user projects in ways users can't diagnose. To only need one unique name, nest: `namespace myVendor.thing { }` (as in [Seeed pxt-grove AHT20.ts](https://github.com/Seeed-Studio/pxt-grove/blob/master/sensors/AHT20.ts)). Not a blocker if a search finds no clash.
 
-**Slack is no longer required** (Martin Williams, Micro:bit Educational Foundation, ticket #103878, Nov 2026). The support article and form may still mention it until they're updated; don't ask the user to join.
-
 **Pre-review:** the Foundation welcomes an email to help@microbit.org (or a ticket at https://support.microbit.org/) with the repo link before submitting; the person who processes approvals gives informal feedback.
 - [ ] **Finished**. Anything in development says "beta" in the repo description.
 
