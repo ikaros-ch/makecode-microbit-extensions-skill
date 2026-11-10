@@ -94,3 +94,12 @@ List every `.cpp` and `.h` in `pxt.json` `files`.
 | Absolute mouse | ✓ | ✓ | | |
 
 On iOS the keyboard service hides the on-screen keyboard. Sending the media "eject" key brings it back.
+
+## UART with a Web Bluetooth app (lessons from microbit-rc)
+
+- **Pairing setting.** With the default *JustWorks* pairing, Chrome connects but writes fail ("GATT operation failed for unknown reason"), so the micro:bit seems to ignore everything. Put `"yotta": { "config": { "microbit-dal": { "bluetooth": { "open": 1, "whitelist": 0, "security_level": null } } } }` in the extension, and still tell users to pick **Project Settings → No Pairing Required** before downloading.
+- **Characteristics.** Service `6e400001-…`; `6e400002` is TX (micro:bit → app, indications), `6e400003` is RX (app → micro:bit, write). At most 20 bytes per write: split lines into byte chunks and reassemble with a streaming `TextDecoder`.
+- **Send bytes, not text of bytes.** `new TextEncoder().encode(uint8array)` turns a `Uint8Array` into the text `"84,84,49,..."`. Pass the bytes straight to `writeValueWithoutResponse`.
+- **One central at a time.** While a phone or tab is connected, the micro:bit stops advertising, so other devices can't find it until that one disconnects. Reflashing also resets it.
+- **V1 works** (the nRF51 has Bluetooth) but has 16 KB RAM, so big programs plus Bluetooth can hit error 020 (out of memory). Bluetooth and `radio` never work together, on V1 or V2.
+- **Android app.** A Trusted Web Activity APK wrapping the site works (a plain WebView has no Web Bluetooth). It loads the live site, so app fixes need no new APK.

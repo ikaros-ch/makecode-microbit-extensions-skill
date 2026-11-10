@@ -100,3 +100,20 @@ thing=github:user/pxt-thing
 ````
 
 The `package` fence is what lets the help page render the extension's blocks.
+
+Read generated help pages before releasing: a bad JSDoc once produced a page whose text was a dump of the source file.
+
+## Block images (README on GitHub, slides)
+
+Render real block PNGs with MakeCode's own renderer instead of screenshots. From a page served on `localhost` (MakeCode's own pages block `fetch` to localhost), embed an iframe of `https://makecode.microbit.org/--docs?render=1&lang=en`, wait for its `{type:"renderready"}` message, then:
+
+```js
+frame.contentWindow.postMessage({ type: "renderblocks", id, code,
+    options: { package: "thing=github:user/pxt-thing", snippetMode } }, "*")
+// reply: { type: "renderblocks", id, uri /* PNG data URL, 4x */, width, height, svg }
+```
+
+- `snippetMode: true` renders a single block or expression on its own; `false` wraps loose statements in `on start`.
+- Several extensions: comma-separate them in `package` (`"a=github:u/a,b=github:u/b#v1.2.3"`).
+- Write code that round-trips to blocks: `if/else`, not `? :`; drop optional arguments (`basic.showIcon(IconNames.Heart)`, not `..., 0`). Otherwise the image shows grey JavaScript blocks.
+- Use the reply's `width` as the `<img width>`; the PNG is 4x for sharpness.

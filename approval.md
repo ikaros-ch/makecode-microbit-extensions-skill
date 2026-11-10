@@ -15,7 +15,7 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
 - [ ] **`icon.png`** in repo root, **300x200 px, under 100 KB**.
 - [ ] **MIT licensed** (`LICENSE.txt` in root).
 - [ ] **README links to the product page** or blog entry.
-- [ ] **README has well-commented examples** as TypeScript / `blocks` fences, not screenshots. A teacher should understand its purpose and use.
+- [ ] **README has well-commented examples** as TypeScript / `blocks` fences, not screenshots. A teacher should understand its purpose and use. GitHub shows `blocks` fences as plain code; to show blocks on GitHub too, add MakeCode-rendered block images (blocks.md) and keep each `blocks` fence under it in a `<details>` "Show code" section.
 - [ ] **README links to further educational materials and tutorials.**
 - [ ] **Blocks are lowercase** unless they refer to acronyms.
 - [ ] **Blocks have tooltips** (JSDoc) **and help links** (`//% help=github:...` → `docs/*.md`). Every **namespace and enum** also gets its own `/** */` tooltip. A `/** */` comment at the top of the file becomes the tooltip of whatever follows it (usually the first enum), so make file headers `//` comments. Check tooltips in JavaScript mode.
@@ -23,7 +23,7 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
 - [ ] TypeScript naming: camelCase functions, namespaces, members; capitalized class names, enums and enum members (see blocks.md). The reviewer also checks:
   - **Enums inside the namespace** (`thing.CustomSlot.Slot1`), not global. A global enum needs a prefix nobody else would use; generic ones like `Lcd` are rejected because they block every other `Lcd...` name.
   - **Self-documenting names**: spell out words, no acronyms *or abbreviations* (`CustomCharacter`, not `Char`), except very common ones (LCD, RGB, I2C).
-  - **A namespace unlikely to clash** with the vendor's or another author's (`groveLcd` could be taken by Seeed). Clashes break user projects in ways users can't diagnose. To only need one unique name, nest: `namespace myVendor.thing { }` (as in [Seeed pxt-grove AHT20.ts](https://github.com/Seeed-Studio/pxt-grove/blob/master/sensors/AHT20.ts)). Not a blocker if a search finds no clash.
+  - **A namespace unlikely to clash** (real case: `gamepad` was already used by the approved `bsiever/microbit-pxt-blehid`; search the sources of approved repos, not just their names) with the vendor's or another author's (`groveLcd` could be taken by Seeed). Clashes break user projects in ways users can't diagnose. To only need one unique name, nest: `namespace myVendor.thing { }` (as in [Seeed pxt-grove AHT20.ts](https://github.com/Seeed-Studio/pxt-grove/blob/master/sensors/AHT20.ts)). Not a blocker if a search finds no clash.
 
 **Slack isn't required**: it isn't used anymore.
 
@@ -50,7 +50,10 @@ mkc build
 
 ## Submit
 
-1. Fill the extension review form: https://form.jotformeu.com/90075019358357 (repo URL, product, contact details, the checklist above). The form needs the submitter's own details; ask the user for them, don't make them up.
+1. Fill the extension review form: https://form.jotformeu.com/90075019358357 (repo URL, product, contact details, the checklist above). The form needs the submitter's own details; ask the user for them, don't make them up. **Submit one extension at a time** (the Foundation's advice, Nov 2026). Besides the checklist, the form asks:
+   - **Associated tutorial?** Link a MakeCode tutorial if there is one (see "Tutorials" in SKILL.md). Optional, but worth adding before submitting.
+   - **Pin allocation:** every pin the accessory uses and how (digital, analog, PWM, SPI, I2C, UART...). Count only what the extension itself claims, not pins used by examples or `test.ts`. A Bluetooth-only extension uses no pins; say so, and that `radio` can't be used alongside it.
+   - **Accessories list:** for a hardware product, submit it to the accessories list first. A software-only or education extension answers "not applicable".
 2. Foundation reviews. Once accepted, the MakeCode team opens a PR on `microsoft/pxt-microbit` adding the repo to the approved list (`targetconfig.json`); a team member comments asking for approval, then it merges.
 3. Approval goes live with the next editor release. Then search for the extension name in Extensions to confirm.
 

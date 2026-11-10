@@ -35,4 +35,4 @@ Build the approval requirements in from the start (`approval.md`), so step 3 of 
 - Say plainly what was not tested on hardware.
 - Release: bump version, tag `vX.Y.Z`, GitHub release. Ask before creating or pushing a repo.
 
-Then offer `/mb-mkcd-extension-approval`.
+Then offer a MakeCode tutorial (SKILL.md "Tutorials") and `/mb-mkcd-extension-approval`.

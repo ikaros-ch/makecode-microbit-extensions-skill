@@ -33,4 +33,4 @@ Fix what can be fixed in the repo. Ask the user before committing, tagging or pu
 
 ## 5. Submit
 
-Follow the Submit section of `approval.md`: the user fills the review form themselves with their own details. Give them the answers prepared from the audit to paste in. After submission, explain the PR on `microsoft/pxt-microbit` and that it goes live with the next editor release.
+Follow the Submit section of `approval.md`: the user fills the review form themselves with their own details. Give them the answers prepared from the audit to paste in, including the form's extra questions (tutorial link, pin allocation, accessories list; see `approval.md`). If there is no tutorial yet, offer to write one first (SKILL.md "Tutorials"). Several extensions: submit one at a time. After submission, explain the PR on `microsoft/pxt-microbit` and that it goes live with the next editor release.

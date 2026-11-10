@@ -56,6 +56,16 @@ Minimal `pxt.json`:
 5. **Test on hardware**: flash `test.ts` with the device attached. The simulator does not emulate I2C peripherals; "runs without error" is all it proves.
 6. **Approval**: see [approval.md](approval.md).
 
+## Tutorials
+
+A step-by-step tutorial that opens inside MakeCode helps teachers, and the approval form asks for one.
+
+- Write `name.md` in the repo root and list it in `pxt.json` `files`. Translations go in `_locales/<lang>/name.md` (also listed); MakeCode picks the editor's language.
+- Open it with `https://makecode.microbit.org/#tutorial:https://github.com/user/pxt-thing/name` (no `.md`). Don't add `?lang=` before the `#`: the hash gets dropped.
+- The repo's `.ts` files are added to the tutorial project automatically, so its blocks are in the toolbox.
+- Format: `# Title`, optional `### @diffs true` (highlights each step's new blocks), then one `## Step title` per step. Add `@showdialog` to a step heading for a pop-up step. Refer to blocks inline with ``||namespace:block text||``. A `blocks` fence in a step is that step's hint: make each hint the whole program so far.
+- MakeCode serves tutorials from its own cache of the repo's releases. After a new release the link says `file 'name.md' not found` until the cache has the tag (check `https://makecode.com/api/gh/user/pxt-thing/refs`); this can take a while. Test in an incognito window.
+
 ## Quick reference
 
 | Need | How |
@@ -87,5 +97,8 @@ Minimal `pxt.json`:
 | Peripheral half-initialised after power-on (e.g. LCD shows half the line) | Peripheral powers up with the micro:bit and misses early commands. Wait until `control.millis()` passes its reset time before init, and follow the datasheet init sequence exactly. Lazy-init on first block call. |
 | Block param not shown | Block text param name must match the TS parameter name (`$text` ↔ `text`). |
 | Image editor block | `//% imageLiteral=1 imageLiteralColumns=5 imageLiteralRows=8 //% shim=images::createImage` on a function returning `Image`. |
+| `mkc build` uses a different editor version than users | Without `mkc.json` it builds against `makecode.microbit.org/beta`. Add `mkc.json` with `{ "targetWebsite": "https://makecode.microbit.org/" }`. |
+| A `.hex` from `mkc build` won't open in MakeCode ("corrupt") | `mkc` hex files run on the micro:bit but don't embed the project. For a hex people open in MakeCode, build the project in the editor and use **Download as File**; such files contain the marker `41140E2FB82FA2BB`. |
+| Greek or other non-English text is garbled on the micro:bit | MakeCode for micro:bit strings keep only the low byte of non-ASCII characters (φ becomes 0xC6). Use English letters in strings and IDs the micro:bit stores or compares. |
 | Worry that `test.ts` ends up in user projects | It doesn't; `testFiles` only compile inside the repo. It still has to compile, and approval checks it covers every block with `// EXPECT:` pass/fail notes. |
 | Approval rejected: README | It needs the product page link, commented `blocks` examples (no screenshots), and links to tutorials/educational material. |
