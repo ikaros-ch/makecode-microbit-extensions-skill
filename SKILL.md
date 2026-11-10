@@ -62,7 +62,7 @@ A step-by-step tutorial that opens inside MakeCode helps teachers, and the appro
 
 - Write `name.md` in the repo root and list it in `pxt.json` `files`. Translations go in `_locales/<lang>/name.md` (also listed); MakeCode picks the editor's language.
 - Open it with `https://makecode.microbit.org/#tutorial:https://github.com/user/pxt-thing/name` (no `.md`). Don't add `?lang=` before the `#`: the hash gets dropped.
-- The repo's `.ts` files are added to the tutorial project automatically, so its blocks are in the toolbox.
+- The repo's `.ts` files are added to the tutorial project automatically, so its blocks are in the toolbox. A Bluetooth extension makes MakeCode ask to remove `radio` or `bluetooth` when the tutorial opens (new projects include radio); there is no way to skip it, so tell students in the first step to click **Remove radio**.
 - Format: `# Title`, optional `### @diffs true` (highlights each step's new blocks), then one `## Step title` per step. Add `@showdialog` to a step heading for a pop-up step. Refer to blocks inline with ``||namespace:block text||``. A `blocks` fence in a step is that step's hint: make each hint the whole program so far.
 - MakeCode serves tutorials from its own cache of the repo's releases. After a new release the link says `file 'name.md' not found` until the cache has the tag (check `https://makecode.com/api/gh/user/pxt-thing/refs`); this can take a while. Test in an incognito window.
 
