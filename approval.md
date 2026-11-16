@@ -15,7 +15,7 @@ The review form makes the submitter tick each of these (form wording, Nov 2026):
 - [ ] **`icon.png`** in repo root, **300x200 px, under 100 KB**.
 - [ ] **MIT licensed** (`LICENSE.txt` in root).
 - [ ] **README links to the product page** or blog entry.
-- [ ] **README has well-commented examples** as TypeScript / `blocks` fences, not screenshots. A teacher should understand its purpose and use. GitHub shows `blocks` fences as plain code; to show blocks on GitHub too, add MakeCode-rendered block images (blocks.md) and keep each `blocks` fence under it in a `<details>` "Show code" section.
+- [ ] **README has well-commented examples** as TypeScript / `blocks` fences, not screenshots. A teacher should understand its purpose and use. Use `blocks` and `sig` fences only: the reviewer rejected MakeCode-rendered block images in the README (Nov 2026), even with the fences kept under `<details>`. Start the README with a step-by-step quick start for people who just want to use it, then the reference.
 - [ ] **README links to further educational materials and tutorials.**
 - [ ] **Blocks are lowercase** unless they refer to acronyms.
 - [ ] **Blocks have tooltips** (JSDoc) **and help links** (`//% help=github:...` → `docs/*.md`). Every **namespace and enum** also gets its own `/** */` tooltip. A `/** */` comment at the top of the file becomes the tooltip of whatever follows it (usually the first enum), so make file headers `//` comments. Check tooltips in JavaScript mode.
@@ -62,3 +62,15 @@ mkc build
 - New releases are picked up automatically; no re-approval for updates.
 - Don't rename the repo or change `blockId`s: approval is per repo and saved projects reference block ids.
 - Exceptions: the Foundation may approve extensions missing a criterion, or decline any extension.
+
+## What the reviewer asked for (microbit-rc and grove lcd, Nov 2026)
+
+- `pxt.json` has `"public": true`, and a short `description` (it is shown in a small space).
+- No `yotta` Bluetooth config in an extension: users must be able to choose the pairing mode. Tell them which mode to pick instead. (In a custom config, use `"security_level": "SECURITY_MODE_ENCRYPTION_OPEN_LINK"`, not `null`.)
+- blockIds as globally unique as `namespace_function`; after a namespace rename, rename the blockIds too.
+- A `@param` line for every parameter, including enums and handlers.
+- Icon without the micro:bit or MakeCode word marks (brand guidelines).
+- README: no ambiguous "v1" (say "v1 of the extension"), a warning next to any APK download, docs for every part of a companion app.
+- Events: the reviewer tests with slow handlers (a tone). Queued events then replay with the same final value; register with `EventFlags.DropIfBusy` and loop while a change counter moved.
+- Tutorials: recheck UI steps against the live editor (Project Settings no longer has a Save button).
+- Mark unfinished work with "- beta" in the repo About.
